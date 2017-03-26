@@ -1,0 +1,172 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #fff8dc;
+  background: #d2691e;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+div.welcome .header {
+  font-size: 72px;
+  padding: 10px;
+  text-shadow: 2px 4px #696969;
+}
+
+div.welcome .subheader {
+  font-size: 40px;
+  padding: 10px;
+}
+
+.ctext {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  display: inline-block;
+  padding: 4px 6px;
+  color: #555555;
+  vertical-align: middle;
+  font-size: 20px;
+  -webkit-box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.game-options li {
+  list-style-type: none;
+  padding: 10px;
+  background: #000080;
+  font-size: 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.game-options li:hover {
+  border: 4px solid #BBE4C4;
+}
+
+.iblock {
+  display: inline-block
+}
+
+.padding10 {
+  padding: 10px;
+}
+
+div.snl-cont {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.snl-board {
+  height: 500px;
+  width: 520px;
+  padding: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.snl-square {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  list-style-type: none;
+  border: 1px solid #00ffff;
+  background: #000000;
+  color: #FFF;
+  text-shadow: 1px 1px #000;
+  font-size: 20px;
+}
+
+.fnumber {
+  float: right;
+}
+
+.snake {
+  background: url('snake.png');
+}
+
+.ladder {
+  background: url('ladder.jpg');
+}
+
+.loader-cont {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+  padding: 10px;
+  height: 30px;
+}
+
+.loader-content {
+  color: #fff;
+  background: #000000;
+  padding: 10px;
+  border-radius: 3px;
+  min-width: 100px;
+}
+
+.bg-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #5A5A5A;
+  opacity: 0.7;
+}
+
+.playGame {
+  cursor: pointer;
+}
+
+.p0active {
+  background: #76e4e3;
+}
+
+.p1active {
+  background: #811111;
+}
+
+.p2active {
+  background: #597272;
+}
+
+.p3active {
+  background: #371111;
+}
+
+footer {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+p.copyright {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    bottom:0;
+}
