@@ -120,7 +120,7 @@ div.snl-cont {
 
 .loader-content {
   color: #fff;
-  background: #000000;
+  background: #0000ff;
   padding: 10px;
   border-radius: 3px;
   min-width: 100px;
@@ -138,6 +138,8 @@ div.snl-cont {
 
 .playGame {
   cursor: pointer;
+  position: relative;
+  top: 3em;
 }
 
 .p0active {
@@ -158,8 +160,7 @@ div.snl-cont {
 
 footer {
     position: relative;
-    height: 300px;
-    width: 100%;
+    top: 7em;
 }
 
 p.copyright {

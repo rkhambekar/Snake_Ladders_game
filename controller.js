@@ -1,4 +1,3 @@
-'use strict';
 var app = angular.module('snlApp', []);
 
 //purposely using run instead of config as I want this block to run after everything has been injected properly
@@ -9,10 +8,7 @@ app.run(function ($rootScope) {
     $rootScope.ladders = [{
         "index": 7,
         "end": 28
-    }, {
-        "index": 16,
-        "end": 40
-    },
+    }, 
     {
         "index": 25,
         "end": 51
@@ -26,7 +22,7 @@ app.run(function ($rootScope) {
         "end": 68
     },
     {
-        "index": 55,
+        "index": 52,
         "end": 76
     },
     {
@@ -43,7 +39,7 @@ app.run(function ($rootScope) {
     },
     {
         "index": 75,
-        "end": 51
+        "end": 54
     },
     {
         "index": 62,
@@ -51,15 +47,15 @@ app.run(function ($rootScope) {
     }, 
     {
         "index": 46,
-        "end": 23
+        "end": 27
     },
     {
-        "index": 34,
-        "end": 16
+        "index": 18,
+        "end": 8
     },
     {
         "index": 26,
-        "end": 8
+        "end": 3
     }];
     $rootScope.board = {};
     $rootScope.activeSquare = {};
@@ -100,8 +96,10 @@ app.controller('GameController', function ($scope, $rootScope) {
 
 //Board Controller
 app.controller('BoardController', function ($scope, $rootScope) {
-    var board = [], i = 0, ladders, snakes;
-    
+    var board = [],
+        i = 0,
+        ladders, snakes;
+
     //Board squares
     for (i = 0; i < 100; ++i) {
         //Even squares
@@ -114,7 +112,7 @@ app.controller('BoardController', function ($scope, $rootScope) {
 				"activeClass" :''
             };
         } else {
-            //Odd squares
+            //odd squares
             board[i] = {
                 "start": i,
                 "end": i,
@@ -141,14 +139,14 @@ app.controller('BoardController', function ($scope, $rootScope) {
 	for (i = 0; i < 100; ++i) {
 		if(board[i].isEven){
             //keeping the continuity in numbering by floating numbers
-			board[i].class = board[i].class+'fnumber ';
+			board[i].class = board[i].class+'fright ';
 		}
 		if(board[i].start > board[i].end){
-            //display snake image
+            //displaying snake image on squares
 			board[i].class = board[i].class+'snake ';
 		}
 		if(board[i].start < board[i].end){
-            //display ladder image
+            //displaying ladder image on squares
 			board[i].class = board[i].class+'ladder ';
 		}
 	}
@@ -163,7 +161,7 @@ app.controller('ButtonController', function ($scope, $rootScope,$timeout) {
         //adding 1 to get dice values from 1 to 6
         $scope.diceValues[0] = Math.floor(Math.random() * 6) + 1;
         $scope.diceValues[1] = Math.floor(Math.random() * 6) + 1;
-		$rootScope.isLoadingText ='Dice 1 : '+$scope.diceValues[0]+ '\n' + ' Dice 2 : '+$scope.diceValues[1];
+		$rootScope.isLoadingText ='Dice 1 --> '+$scope.diceValues[0]+' Dice 2 --> '+$scope.diceValues[1];
     }
 	$scope.changeCurrentPlayer = function(){
 		if($rootScope.currentPlayer !== $rootScope.players.length-1){
@@ -188,12 +186,12 @@ app.controller('ButtonController', function ($scope, $rootScope,$timeout) {
             $rootScope.activeSquare = $rootScope.board[100 - $rootScope.players[player].currentPos - 1];
 			console.log($rootScope.activeSquare);
             if ($rootScope.activeSquare.start != $rootScope.activeSquare.end) {
-                //going up
                 if ($rootScope.activeSquare.start < $rootScope.activeSquare.end) {
+                    //going up
                     $rootScope.isLoadingText ="Player " + ($rootScope.currentPlayer+1) + "climbs a ladder";
                 }
-                //coming down
                 if ($rootScope.activeSquare.start > $rootScope.activeSquare.end) {
+                    //coming down
                    $rootScope.isLoadingText ="Player " + ($rootScope.currentPlayer+1) + "hits a snake";
                 }
                 $rootScope.players[player].currentPos = $rootScope.activeSquare.end;
@@ -213,32 +211,25 @@ app.controller('ButtonController', function ($scope, $rootScope,$timeout) {
 			
 			$rootScope.isLoadingText ="Player"+($rootScope.currentPlayer+1)+" cannot move";
 		}
-		//resetting the dice values to default
+		
+        //resetting the dice values to default
         $scope.diceValues = [-1, -1];
 		$scope.gameOver = $rootScope.gameOver;
     }
-
+    
     //everything together in a modular way for function calls
 	$scope.startGame = function(){
-			
+		
 			$rootScope.isLoading = true;
 			$rootScope.isLoadingText ='Rolling Dice..';
-			
+            
             //pause for 1 second
-            $timeout(function(){
-                $scope.rollDice();
-            },1000);
+			$timeout(function(){$scope.rollDice();},1000);
 			
             //happens 1 second after rollDice is executed
-			$timeout(function(){
-                $scope.makeMove($rootScope.currentPlayer);
-            },2000);
+			$timeout(function(){$scope.makeMove($rootScope.currentPlayer);},2000);
 			
             //change current player after makeMove is executed
-			if(!$rootScope.gameOver){ 
-                $timeout(function(){
-                    $scope.changeCurrentPlayer();
-                },3000); 
-            }			
+			if(!$rootScope.gameOver){ $timeout(function(){$scope.changeCurrentPlayer();},3000); }
 	}
 });
